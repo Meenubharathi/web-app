@@ -5,7 +5,7 @@ import exception.CheckException;
 import methodpackage.StringBuilderTask;
 
 import java.util.InputMismatchException;
-public class TestRunner 
+public class StringBuilderRunner 
 { 
 	static Scanner inp=new Scanner(System.in);
 	public String enterString()
@@ -17,7 +17,7 @@ public class TestRunner
 	public static void main(String[] args) 
 	{
 		StringBuilderTask run=new StringBuilderTask();
-		TestRunner test=new TestRunner();
+		StringBuilderRunner test=new StringBuilderRunner();
 		try
 		{
 		System.out.println("Enter program number 1 to 10:");
