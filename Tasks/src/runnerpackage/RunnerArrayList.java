@@ -5,7 +5,7 @@ import exception.CheckException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
-import methodpackage.MethodArrayList;
+import methodpackage.TaskArrayList;
 //import utility.Util;
 
 public class RunnerArrayList 
@@ -31,7 +31,7 @@ public class RunnerArrayList
 		
      public static void main(String[] args) //throws CheckException
      {
-    	 MethodArrayList arrayList=new MethodArrayList();
+    	 TaskArrayList arrayList=new TaskArrayList();
     	 RunnerArrayList run=new RunnerArrayList();
     	 try
     	 {
@@ -41,14 +41,14 @@ public class RunnerArrayList
  		 switch(enter)
  		 {
  		 case 1:
- 			 List<String> arrayL=arrayList.create();
+ 			 List<String> arrayL=arrayList.createArrayList();
  			 int size=arrayList.arraySize(arrayL);
  			 System.out.println("the size is:"+size);
  			 break;
  		 case 2:
  			 int num=run.count();
  			 String[] string=run.getString(num);
- 			 List<String> stringList=arrayList.createAL(string,num);
+ 			 List<String> stringList=arrayList.createArrayListString(string,num);
  			 System.out.println("the array list is "+stringList);
  			 size=arrayList.arraySize(stringList);
  			 System.out.println("the size is:"+size);
@@ -62,7 +62,7 @@ public class RunnerArrayList
  			 {
  				 num2[i]=input.nextInt();
  			 }
- 			 List<Integer> al1=arrayList.createAL1(num2, num);
+ 			 List<Integer> al1=arrayList.createArrayListInteger(num2, num);
  			 System.out.println("the array list is "+al1);
  			 size=arrayList.arraySize(al1);
  			 System.out.println("the size is:"+size);
@@ -72,7 +72,7 @@ public class RunnerArrayList
  			 Object[] obj=new Object[2];
  			 obj[0]=run;
  			 obj[1]=arrayList;
- 			 List<Object> obj9= arrayList.create2(obj,2);
+ 			 List<Object> obj9= arrayList.createArrayListObject(obj,2);
  			 System.out.println("output"+obj9);
  			 break;
  			 
@@ -88,7 +88,7 @@ public class RunnerArrayList
  			 obj[4]=input.nextInt();
  			 System.out.println("enter integer");
  			 obj[5]=input.nextInt();
- 			 obj9=arrayList.create2(obj,6);
+ 			 obj9=arrayList.createArrayListObject(obj,6);
  			 System.out.println("the output"+obj9);
  			 size=arrayList.arraySize(obj9);
 			 System.out.println("the size is:"+size);
@@ -97,7 +97,7 @@ public class RunnerArrayList
  		 case 6:
  			 num=run.count();
  			 string=run.getString(num);
- 			 stringList=arrayList.createAL(string,num);
+ 			 stringList=arrayList.createArrayListString(string,num);
 			 System.out.println("the array list is "+stringList);
 			 size=arrayList.arraySize(stringList);
 			 System.out.println("the size is:"+size);
@@ -110,7 +110,7 @@ public class RunnerArrayList
  		 case 7:
  			 num=run.count();
 			 string=run.getString(num);
-			 stringList=arrayList.createAL(string,num);
+			 stringList=arrayList.createArrayListString(string,num);
 			 System.out.println("the array list is "+stringList);
 			 size=arrayList.arraySize(stringList);
 			 System.out.println("the size is:"+size);
@@ -124,7 +124,7 @@ public class RunnerArrayList
  		 case 8:
  			 num=run.count();
 			 string=run.getString(num);
-			 stringList=arrayList.createAL(string,num);
+			 stringList=arrayList.createArrayListString(string,num);
 			 System.out.println("the array list is "+stringList);
 			 size=arrayList.arraySize(stringList);
 			 System.out.println("the size is:"+size);
@@ -137,7 +137,7 @@ public class RunnerArrayList
  		 case 9:
  			 num=run.count();
 			 string=run.getString(num);
-			 stringList=arrayList.createAL(string,num);
+			 stringList=arrayList.createArrayListString(string,num);
 			 System.out.println("the array list is "+stringList);
 			 size=arrayList.arraySize(stringList);
 			 System.out.println("the size is:"+size);
@@ -152,7 +152,7 @@ public class RunnerArrayList
  		 case 10:
  			 num=run.count();
 			 string=run.getString(num);
-			 stringList=arrayList.createAL(string,num);
+			 stringList=arrayList.createArrayListString(string,num);
 			 System.out.println("the array list is "+stringList);
 			 size=arrayList.arraySize(stringList);
 			 System.out.println("the size is:"+size);
@@ -169,7 +169,7 @@ public class RunnerArrayList
  		 case 11:
  			 num=run.count();
 			 string=run.getString(num);
-			 stringList=arrayList.createAL(string,num);
+			 stringList=arrayList.createArrayListString(string,num);
 			 System.out.println("the array list is "+stringList);
 			 size=arrayList.arraySize(stringList);
 			 System.out.println("the size is:"+size);
@@ -184,13 +184,13 @@ public class RunnerArrayList
  		 case 12:	 
  			 num=run.count();
 			 string=run.getString(num);
-			 stringList=arrayList.createAL(string,num);
+			 stringList=arrayList.createArrayListString(string,num);
 			 System.out.println("the array list is "+stringList);
 			 size=arrayList.arraySize(stringList);
 			 System.out.println("the size is:"+size);
 			 num=run.count();
 			 string=run.getString(num);
-			 List<String> stringList1=arrayList.createAL(string,num);
+			 List<String> stringList1=arrayList.createArrayListString(string,num);
 			 System.out.println("the array list is "+stringList1);
 			 size=arrayList.arraySize(stringList1);
 			 System.out.println("the size is:"+size);
@@ -203,13 +203,13 @@ public class RunnerArrayList
  		 case 13:
  			 num=run.count();
 			 string=run.getString(num);
-			 stringList=arrayList.createAL(string,num);
+			 stringList=arrayList.createArrayListString(string,num);
 			 System.out.println("the array list is "+stringList);
 			 size=arrayList.arraySize(stringList);
 			 System.out.println("the size is:"+size);
 			 num=run.count();
 			 string=run.getString(num);
-			 stringList1=arrayList.createAL(string,num);
+			 stringList1=arrayList.createArrayListString(string,num);
 			 System.out.println("the array list is "+stringList1);
 			 size=arrayList.arraySize(stringList1);
 			 System.out.println("the size is:"+size);
@@ -227,13 +227,13 @@ public class RunnerArrayList
 			 {
 				 f1[i]=input.nextFloat();
 			 }
-			 List<Float> floatList2=arrayList.createAL2(f1, num);
+			 List<Float> floatList2=arrayList.createArrayListFloat(f1, num);
 			 System.out.println("the array list is:"+floatList2);
 			 size=arrayList.arraySize(floatList2);
 			 System.out.println("the size is "+size);
 		     System.out.println("Enter the value to be removed:");
 			 float f3=input.nextFloat();
-			 floatList2=arrayList.deleteValue(floatList2, f3);
+			 floatList2=arrayList.deleteValue(floatList2, f3,num);
 			 System.out.println("the final list is:"+floatList2);
 			 size=arrayList.arraySize(floatList2);
 			 System.out.println("the size is "+size);
@@ -247,7 +247,7 @@ public class RunnerArrayList
  			 {
  				 f[i]=input.nextFloat();
  			 }
- 			 List<Float> floatList=arrayList.createAL2(f, num);
+ 			 List<Float> floatList=arrayList.createArrayListFloat(f, num);
  			 System.out.println("the array list is:"+floatList);
  			 size=arrayList.arraySize(floatList);
 			 System.out.println("the size is "+size);
@@ -267,7 +267,7 @@ public class RunnerArrayList
  			 {
  				 value[i]=input.nextLong();
  			 }
- 			 List<Long>  longList=arrayList.createAL3(value, num);
+ 			 List<Long>  longList=arrayList.createArrayListLong(value, num);
  			 System.out.println("the array list is:"+longList);
  			 size=arrayList.arraySize(longList);
  			 System.out.println("the size is:"+size);
@@ -286,13 +286,13 @@ public class RunnerArrayList
  		 case 17:
  			 num=run.count();
 			 string=run.getString(num);
-			 stringList=arrayList.createAL(string,num);
+			 stringList=arrayList.createArrayListString(string,num);
 			 System.out.println("the array list is "+stringList);
 			 size=arrayList.arraySize(stringList);
 			 System.out.println("the size is:"+size);
 			 num=run.count();
 			 string=run.getString(num);
-			 List<String> list6=arrayList.createAL(string,num);
+			 List<String> list6=arrayList.createArrayListString(string,num);
 			 System.out.println("the array list is "+list6);
 			 int number7=arrayList.arraySize(list6);
 			 System.out.println("the size is:"+number7);
@@ -305,13 +305,13 @@ public class RunnerArrayList
  		 case 18:	 
  			 num=run.count();
  			 string=run.getString(num);
-			 List<String> list3=arrayList.createAL(string,num);
+			 List<String> list3=arrayList.createArrayListString(string,num);
 			 System.out.println("the array list is "+list3);
 			 size=arrayList.arraySize(list3);
 			 System.out.println("the size is:"+size);
 			 num=run.count();
 			 string=run.getString(num);
-			 List<String> list4=arrayList.createAL(string,num);
+			 List<String> list4=arrayList.createArrayListString(string,num);
 			 System.out.println("the array list is "+list4);
 			 size=arrayList.arraySize(list4);
 			 System.out.println("the size is:"+size);
@@ -324,12 +324,12 @@ public class RunnerArrayList
  		 case 19:
  			 num=run.count();
 			 long[] value1 = new long[num];
-			 System.out.println("the float value is:");
+			 System.out.println("the long value is:");
 			 for(int i=0;i<num;i++)
 			 {
 				 value1[i]=input.nextLong();
 			 }
-			 List<Long>  longList1=arrayList.createAL3(value1, num);
+			 List<Long>  longList1=arrayList.createArrayListLong(value1, num);
 			 System.out.println("the array list is:"+longList1);
 			 size=arrayList.arraySize(longList1);
 			 System.out.println("the size is:"+size);
@@ -342,7 +342,7 @@ public class RunnerArrayList
  		 case 20:
  		 num=run.count();
 		 string=run.getString(num);
-		 List<String> list9=arrayList.createAL(string,num);
+		 List<String> list9=arrayList.createArrayListString(string,num);
 		 System.out.println("the array list is "+list9);
 		 size=arrayList.arraySize(list9);
 		 System.out.println("the size is:"+size);

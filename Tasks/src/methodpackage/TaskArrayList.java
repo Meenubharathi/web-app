@@ -1,21 +1,23 @@
 package methodpackage;
+
 import java.util.ArrayList;
 import exception.CheckException;
 import utility.Util;
 
 import java.util.Iterator;
 import java.util.List;
-public class MethodArrayList
+
+public class TaskArrayList
 { 
-   public List<String> create()        //1
+   public List<String> createArrayList()        //1 //Swami
    {
 	   List<String> list=new ArrayList<>();
 	   return list;
    }
    
-   public List<String> createAL(String[] stringList,int number)  throws CheckException  //2
+   public List<String> createArrayListString(String[] stringList,int number)  throws CheckException  //2 //Swami
    {      Util.check(stringList);
-	      List<String> list=create();
+	      List<String> list=createArrayList();
 	      for(int i=0;i<number;i++)
 	      {
 	  	     list.add(stringList[i]);
@@ -23,7 +25,7 @@ public class MethodArrayList
 		  return list;
    }
    
-   public List<Integer> createAL1(int[] intList,int number) throws CheckException  //3
+   public List<Integer> createArrayListInteger(int[] intList,int number) throws CheckException  //3 //Swami
    {       
 	      Util.check(intList);
           List<Integer> list=new ArrayList<Integer>();
@@ -33,10 +35,10 @@ public class MethodArrayList
 	      }
 		  return list;
    }
-    public List<Object> create2(Object[] object,int number)  throws CheckException      //4,5
+    public List<Object> createArrayListObject(Object[] object,int number)  throws CheckException      //4,5 //Swami
    {   
        Util.check(object);	
-	   List<Object> list=new ArrayList<>();
+	   List<Object> list=new ArrayList<Object>();
 	   for(int i=0;i<number;i++)
 	   {
 		   list.add(object[i]);
@@ -45,7 +47,7 @@ public class MethodArrayList
    }
   
    
-   public List<Float> createAL2(float[] floatList,int number) throws CheckException        //14,15
+   public List<Float> createArrayListFloat(float[] floatList,int number) throws CheckException        //14,15//swami
    {       
 	      Util.check(floatList);
 	      List<Float> list=new ArrayList<Float>();
@@ -56,7 +58,7 @@ public class MethodArrayList
 		  return list;
    } 
    
-   public List<Long> createAL3(long[] longList,int number)  throws CheckException         //16
+   public List<Long> createArrayListLong(long[] longList,int number)  throws CheckException         //16
    {      
 	      Util.check(longList);
 	      List<Long> list=new ArrayList<Long>();
@@ -99,7 +101,7 @@ public class MethodArrayList
    
    public  int lIndexOf(List<String> list,String string) throws CheckException   //9
    {   Util.check(list);
-	   int lastIndex=list.lastIndexOf(string);
+	   int lastIndex=list.lastIndexOf(string);//Swami
 	   return lastIndex;
    }
    
@@ -152,10 +154,11 @@ public class MethodArrayList
 	  return floatList;
    }
   
-   public List<Float> deleteValue(List<Float> floatList,float value)  throws CheckException      //14
+   public List<Float> deleteValue(List<Float> floatList,float value,int n)  throws CheckException      //14
    {   Util.check(floatList);
-	   floatList.removeIf(e->(e==value));
-	   return floatList;
+	  // floatList.removeIf(e->(e==value));//Swami
+        floatList.remove(value);
+        return floatList;
    }
    
    public List<Long> longDelete(List<Long> fullList,List<Long> subList) throws CheckException     //16
@@ -187,14 +190,15 @@ public class MethodArrayList
    public List<String> different(List<String> firstList,List<String> secondList) throws CheckException       //17
    {   Util.check(firstList);
        Util.check(secondList);
-	   secondList.retainAll(firstList);
+	   //secondList.retainAll(firstList);//Swami
 	   firstList.removeAll(secondList); 
 	   return firstList;
    }
    
    public List<Long> remove(List<Long> longList) throws CheckException         //19
    {   Util.check(longList);
-	   longList.removeAll(longList);
+	   //longList.removeAll(longList);//Swami
+       longList.clear();
 	   return longList;
    }
    
