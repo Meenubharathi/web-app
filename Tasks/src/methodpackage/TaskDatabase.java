@@ -1,6 +1,7 @@
 package methodpackage;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,10 +24,10 @@ public class TaskDatabase
 	}
     public String createTable()          //1
      {
-    	 String query="create table EMPLOYEE"+"(EMPLOYEE_ID integer(10) NOT NULL,"+"NAME varchar(20) NOT NULL,"
+    	String query="create table EMPLOYEE"+"(EMPLOYEE_ID integer(10) NOT NULL,"+"NAME varchar(20) NOT NULL,"
                                               +"MOBILE integer(10) NOT NULL,"+"EMAIL varchar(30) NOT NULL,"
     			                              +"DEPARTMENT varchar(20) NOT NULL,"+"PRIMARY KEY (EMPLOYEE_ID))";
-    	 return query;
+     	 return query;
      }
      public void insertTable(int id,String name,long mobile,String email,String dept) throws SQLException    //2
      {
@@ -44,8 +45,8 @@ public class TaskDatabase
     		statement.executeUpdate();
     	 }
     }
-     public void insertPOJO(List<PojoDataBase> list) throws SQLException             //8
-     {
+    public void insertPOJO(List<PojoDataBase> list) throws SQLException             //8
+      {
     	 String query="insert into EMPLOYEE"+"(EMPLOYEE_ID,NAME,MOBILE,EMAIL,DEPARTMENT)"+
                  "values (?,?,?,?,?)";
         try(Connection connect=Database.getConnection();
