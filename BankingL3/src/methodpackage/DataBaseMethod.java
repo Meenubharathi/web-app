@@ -34,7 +34,7 @@ public class DataBaseMethod
     public String createCustomerAccountDetailTable()
     {
     	String query="create table CUSTOMER_ACCOUNT_DETAILS (CUSTOMER_ID integer(5) NOT NULL,ACCOUNT_NO bigint(20) NOT NULL,"
-    			+ "IFSC_CODE varchar(15) NOT NULL,BRANCH varchar(20) NOT NULL,BALANCE bigint(20) NOT NULL,ACCOUNT_TYPE varchar(20) NOT NULL,"
+    			+ "IFSC_CODE varchar(15) NOT NULL,BRANCH varchar(20) NOT NULL,BALANCE bigint(20) NOT NULL,ACCOUNT_TYPE varchar(50) NOT NULL,"
     			+"STATUS varchar(10) NOT NULL,"
     			+ "PRIMARY KEY (ACCOUNT_NO),FOREIGN KEY (CUSTOMER_ID) REFERENCES USER(CUSTOMER_ID))";
      	return query;
@@ -111,12 +111,12 @@ public class DataBaseMethod
     		       for(TransactionDetails trans:list)
     		       {   
     		    	   statement.setInt(1, trans.getCustomerId());
-    		    	   statement.setLong(1, trans.getTime());
-    		    	   statement.setLong(2,trans.getAccountNumber());
-    		    	   statement.setLong(3,trans.getCurrent_Balance());
-    		    	   statement.setString(4,trans.getModeOfTransaction());
-    		    	   statement.setLong(5, trans.getAmount());
-    		    	   statement.setLong(6, trans.getTransaction_Account());
+    		    	   statement.setLong(2, trans.getTime());
+    		    	   statement.setLong(3,trans.getAccountNumber());
+    		    	   statement.setLong(4,trans.getCurrent_Balance());
+    		    	   statement.setString(5,trans.getModeOfTransaction());
+    		    	   statement.setLong(6, trans.getAmount());
+    		    	   statement.setLong(7, trans.getTransaction_Account());
     		    	   statement .execute();
     		       }
     	        }

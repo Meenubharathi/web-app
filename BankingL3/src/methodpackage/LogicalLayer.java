@@ -1,12 +1,17 @@
 package methodpackage;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.Clock;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+
 
 public class LogicalLayer
 {
@@ -37,6 +42,7 @@ public class LogicalLayer
     	       	    	user.setEmail(result.getString(3));
     	       	    	user.setPhoneNo(result.getLong(4));
     	       	    	user.setPassWord(result.getString(5));
+    	       	    	user.setStatus(result.getString(6));
     	       	    	map.put(result.getInt("CUSTOMER_ID"), user);
     	    	   
     	    	    }
@@ -54,11 +60,12 @@ public class LogicalLayer
          		{
          	        CustomerAccountDetails acc=new CustomerAccountDetails();
          			acc.setCustomerID(result.getInt(1));
-         		    acc.setAccountNo(result.getLong(3));
-         		    acc.setIFSCcode(result.getString(4));
-         		    acc.setBranch(result.getString(5));
-         		    acc.setBalance(result.getLong(6));
-         			acc.setAccountType(result.getString(7));
+         		    acc.setAccountNo(result.getLong(2));
+         		    acc.setIFSCcode(result.getString(3));
+         		    acc.setBranch(result.getString(4));
+         		    acc.setBalance(result.getLong(5));
+         			acc.setAccountType(result.getString(6));
+         			acc.setStatus(result.getString(7));
          			map1.put(result.getLong("ACCOUNT_NO"),acc);
           	    	
          	    		  
@@ -78,10 +85,10 @@ public class LogicalLayer
      		{
      	   		CustomerDetails details=new CustomerDetails();
      			details.setCustomerID(result.getInt(1));
-     	    	details.setAdharNo(result.getLong(3));
-     	    	details.setPanNo(result.getString(4));
-     	    	details.setDob(result.getString(5));
-     	    	details.setAddress(result.getString(6));
+     	    	details.setAdharNo(result.getLong(2));
+     	    	details.setPanNo(result.getString(3));
+     	    	details.setDob(result.getString(4));
+     	    	details.setAddress(result.getString(5));
      	    	map.put(result.getInt("CUSTOMER_ID"),details);
      		}
      		return map;
@@ -92,16 +99,12 @@ public class LogicalLayer
   {
     		    Map<Integer,UserDetails> map=new HashMap<>();	    
     	   {
-    	    		String password="PASSWORD";
-        	    	if(userID==100&&userPassword.equals(password))
-        	    	{
-        	             System.out.println("you are not a customer");
-        	    	}
-        	    	else
-        	    	{
-    	    		String  query="select * from USER where CUSTOMER_ID= ? and PASSWORD= ?";
+    	            String password=getPassword(userID);
+    		        if(userPassword.equals(password))
+    		        {
+        	      	String  query1="select * from USER where CUSTOMER_ID= ? and PASSWORD= ?";
     	       	     try(Connection connect=Database.connection();
-    	       		  	 PreparedStatement	statement =connect.prepareStatement(query);)
+    	       		  	 PreparedStatement	statement =connect.prepareStatement(query1);)
     	       	     {
     	       		statement.setInt(1, userID);
     	       		statement.setString(2, userPassword);
@@ -115,18 +118,19 @@ public class LogicalLayer
     	       	    	user.setEmail(result.getString(3));
     	       	    	user.setPhoneNo(result.getLong(4));
     	       	    	user.setPassWord(result.getString(5));
+    	       	    	user.setStatus(result.getString(6));
     	       	    	map.put(userID, user);
     	    	        }
     	    	      }
     	       	   }
-    	     
-    	      }
+        	    	
+    		        }
     	    	}
 				return map;
   }
     	 
     
-    public Map<Integer,Map<Long,CustomerAccountDetails>>/*List<Object>*/ getAccountDetails(int id) throws SQLException
+    public Map<Integer,Map<Long,CustomerAccountDetails>> getAccountDetails(int id) throws SQLException
     {
     		Map<Integer,Map<Long,CustomerAccountDetails>> map=new HashMap<>();
     	Map<Long,CustomerAccountDetails> map1=new HashMap<>();
@@ -138,11 +142,12 @@ public class LogicalLayer
           		{
           	    	CustomerAccountDetails acc=new CustomerAccountDetails();
          			acc.setCustomerID(result.getInt(1));
-         		    acc.setAccountNo(result.getLong(3));
-         		    acc.setIFSCcode(result.getString(4));
-         		    acc.setBranch(result.getString(5));
-         		    acc.setBalance(result.getLong(6));
-         			acc.setAccountType(result.getString(7));
+         		    acc.setAccountNo(result.getLong(2));
+         		    acc.setIFSCcode(result.getString(3));
+         		    acc.setBranch(result.getString(4));
+         		    acc.setBalance(result.getLong(5));
+         			acc.setAccountType(result.getString(6));
+         			acc.setStatus(result.getString(7));
          			map1.put(result.getLong("ACCOUNT_NO"),acc);
           	    	map.put(id, map1);	  
           		}
@@ -162,11 +167,12 @@ public class LogicalLayer
      		{
      			CustomerAccountDetails acc=new CustomerAccountDetails();
      			acc.setCustomerID(result.getInt(1));
-     		    acc.setAccountNo(result.getLong(3));
-     		    acc.setIFSCcode(result.getString(4));
-     		    acc.setBranch(result.getString(5));
-     		    acc.setBalance(result.getLong(6));
-     			acc.setAccountType(result.getString(7));
+     		    acc.setAccountNo(result.getLong(2));
+     		    acc.setIFSCcode(result.getString(3));
+     		    acc.setBranch(result.getString(4));
+     		    acc.setBalance(result.getLong(5));
+     			acc.setAccountType(result.getString(6));
+     			acc.setStatus(result.getString(7));
      			map.put(result.getLong("ACCOUNT_NO"),acc);
      				  
      		}
@@ -184,10 +190,10 @@ public class LogicalLayer
      		{
      			CustomerDetails details=new CustomerDetails();
      			details.setCustomerID(result.getInt(1));
-     	    	details.setAdharNo(result.getLong(3));
-     	    	details.setPanNo(result.getString(4));
-     	    	details.setDob(result.getString(5));
-     	    	details.setAddress(result.getString(6));
+     	    	details.setAdharNo(result.getLong(2));
+     	    	details.setPanNo(result.getString(3));
+     	    	details.setDob(result.getString(4));
+     	    	details.setAddress(result.getString(5));
      	    	map.put(result.getInt("CUSTOMER_ID"),details);
      		}
      		return map;
@@ -222,10 +228,11 @@ public class LogicalLayer
        long balance =getBalance(accNo);
  	   if(balance>=3000)
  	   {
- 	            balance=balance-amount;
- 	            if(balance>=3000)
- 	            {
- 	            	return balance;
+ 		        if(amount<balance)
+ 		        {
+ 	                    balance=balance-amount;
+ 	                    if(balance<3000)
+ 	                    return balance;
  	            }
  	   }
  	   return balance;
@@ -268,8 +275,108 @@ public class LogicalLayer
         }
    	return acc_no;
     }
-  
-  
+   public String getPassword(int id) throws SQLException
+   {
+	   String query ="select PASSWORD from USER where CUSTOMER_ID="+id+"";
+   	String password = null ;
+   	try(Connection connect=Database.connection();
+     		  	 PreparedStatement	statement =connect.prepareStatement(query);ResultSet result=statement.executeQuery();)
+       	{
+       		while(result.next())
+       		{
+       			password=result.getString("PASSWORD");
+       		}
+       	}
+   	return password;
+     
+   }
+   public void updateUserDetails(String field,String value,int id) throws SQLException
+   {
+	   String query="update USER set "+field+" = ? where CUSTOMER_ID="+id+"";
+	   try(Connection connect=Database.connection();
+  		  	 PreparedStatement	statement =connect.prepareStatement(query);)
+  	 {
+  		statement.setString(1,value);
+  			statement.executeUpdate();
+  	 }
+   }
+   
+   public void updateAccountDetails(String field,String value,long accNo) throws SQLException
+   {
+	   String query="update CUSTOMER_ACCOUNT_DETAILS set "+field+" = ? where ACCOUNT_NO="+accNo+"";
+	   try(Connection connect=Database.connection();
+  		  	 PreparedStatement	statement =connect.prepareStatement(query);)
+  	 {
+  		statement.setString(1,value);
+  			statement.executeUpdate();
+  	 }
+   }
+   public void updatePersonalDetails(String field,String value,int id) throws SQLException
+   {
+	   String query="update CUSTOMER_DETAILS set "+field+" = ? where CUSTOMER_ID="+id+"";
+	   try(Connection connect=Database.connection();
+  		  	 PreparedStatement	statement =connect.prepareStatement(query);)
+  	 {
+  		statement.setString(1,value);
+  			statement.executeUpdate();
+  	 }
+   }
+   public Map<Long,List<TransactionDetails>> lastTransaction(long accNo) throws SQLException
+   {
+	   Map<Long,List<TransactionDetails>> map=new HashMap<>();
+	  List<TransactionDetails> list=new ArrayList();
+	   String query="select * from TRANSACTION_DETAILS where ACCOUNT_NO="+accNo+" limit 5";
+	   try(Connection connect=Database.connection();
+   		  	 PreparedStatement	statement =connect.prepareStatement(query);ResultSet result=statement.executeQuery();)
+     	{
+     		while(result.next())
+     		{
+     		     TransactionDetails trans=new TransactionDetails();
+                 trans.setAccount_Number(result.getLong(1));
+                 trans.setCustomerId(result.getInt(2));
+                 trans.setTime(result.getLong(3));
+                 trans.setAmount(result.getLong(4));
+                 trans.setModeOfTransaction(result.getString(5));
+                 trans.setCurrent_Balance(result.getLong(6));
+                 trans.setTransaction_Account(result.getLong(7));
+                 list.add(trans);
+                 map.put(accNo,list);
+     		}
+     		return map;
+     	}
+   }
+   public String getStatus(long accNo ) throws SQLException
+   {
+	   String query="select STATUS from CUSTOMER_ACCOUNT_DETAILS where ACCOUNT_NO="+accNo+"";
+	   String status = null;
+	   try(Connection connect=Database.connection();
+   		  	 PreparedStatement	statement =connect.prepareStatement(query);ResultSet result=statement.executeQuery();)
+     	{
+     		while(result.next())
+     		{
+     			status=result.getString("STATUS");
+     		}
+     	}
+ 	return status;
+ 
+   }
+   public String getUserStatus(int id) throws SQLException
+   {
+	   String query="select STATUS from CUSTOMER_ACCOUNT_DETAILS where CUSTOMER_ID="+id+"";
+	   String status = null;
+	   try(Connection connect=Database.connection();
+   		  	 PreparedStatement	statement =connect.prepareStatement(query);ResultSet result=statement.executeQuery();)
+     	{
+     		while(result.next())
+     		{
+     			status=result.getString("STATUS");
+     		}
+     	}
+ 	return status;
+ 
+   }
+
+ 
     }
     
 

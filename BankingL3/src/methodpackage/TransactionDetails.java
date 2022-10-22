@@ -66,5 +66,10 @@ public class TransactionDetails
 	{
 		this.transactionAccount = transactionAccount;
 	}
+	public String toString()
+	{
+		return "CUSTOMER_ID: " +this.customerId+ " ,TIME: " +this.time+ " ,ACCOUNT_NO: " +this.accountNumber+ " MODE_OF_TRANSACTION: " +this.modeOfTransaction+
+		                 " ,AMOUNT: " +this.amount+ " ,CURRENT_BALANCE: " +this.currentBalance+ " ,Transaction_account: " +this.transactionAccount;
+	}
  }
 
